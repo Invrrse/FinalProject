@@ -1,2 +1,11 @@
 /* Your styles go here */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+.jumbotron{
+    background: url("https://images3.alphacoders.com/152/152419.jpg");
+    background-position: 0 -500px;
+    background-size: cover;
+}
+p{
+    font-size: 20px;
+}

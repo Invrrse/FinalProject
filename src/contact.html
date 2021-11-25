@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+    </style>
+
+    <link rel="stylesheet" href="stylesheets/main.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-sm-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">HCA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="housing.html">Properties Available</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="refurnish.html">Refurnishing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="minigame.html">Mini Game</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-success ms-auto" id="login">Login</button>
+                <button class="btn btn-success ms-5 sign_up" id="sign_up">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5" style="background-color: rgb(0, 0, 0, 0);">
+        <div class="row">
+            <img src="https://images.unsplash.com/photo-1592401807554-4a13cd4b3225?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                alt="" class="rounded-circle col-6">
+            <div class="col-6 text-center text-light my-auto">
+                <h1>Come on in!</h1>
+                <p>current address: XXX East XXst., Ogden Utah, 84409</p>
+            </div>
+        </div>
+
+    </div>
+
+    <canvas id="canvas1"></canvas>
+
+    <script src="javascripts/main.js"></script>
+
+    <script>
+        const canvas = document.getElementById("canvas1");
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particleArray;
+
+        //get mouse position
+        let mouse = {
+            x: null,
+            y: null,
+            radius: (canvas.height / 80) * (canvas.width / 80)
+        }
+
+        window.addEventListener('mousemove',
+            function (event) {
+                mouse.x = event.x;
+                mouse.y = event.y;
+            }
+        );
+
+        class Particle {
+            constructor(x, y, directionX, directionY, size, color) {
+                this.x = x;
+                this.y = y;
+                this.directionX = directionX;
+                this.directionY = directionY;
+                this.size = size;
+                this.color = color;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                ctx.fillStyle = 'white';
+                ctx.fill();
+            }
+
+            //check particle position, check mouse postitoon, move the particle, draw the particle
+
+            update() {
+                //check if particle is still withim canvas
+                if (this.x > canvas.width || this.x < 0) {
+                    this.directionX = -this.directionX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.directionY = -this.directionY;
+                }
+
+                //check collision detection moouse posititon / particle position
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < mouse.radius + this.size) {
+                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
+                        this.x -= 5;
+                    }
+                    if (mouse.x > this.x && this.x > this.size * 10) {
+                        this.x -= 5;
+                    }
+                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
+                        this.y -= 5;
+                    }
+                    if (mouse.y > this.y && this.y > this.size * 10) {
+                        this.y -= 5;
+                    }
+
+                }
+                //move particle
+                this.x += this.directionX;
+                this.y += this.directionY;
+                //draw particle
+                this.draw();
+            }
+
+        }
+
+        //create particle array
+        function init() {
+            particleArray = [];
+            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let size = (Math.random() * 5) + 1;
+                let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+                let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+                let directionX = ((Math.random() * 5) - 2.5);
+                let directionY = ((Math.random() * 5) - 2.5);
+                let color = 'black'
+                particleArray.push(new Particle(x, y, directionX, directionY, size, color));
+
+            }
+        }
+
+        //check if the particles are close enough to draw a line between them
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particleArray.length; a++) {
+                for (let b = 0; b < particleArray.length; b++) {
+                    let distance = ((particleArray[a].x - particleArray[b].x) * (particleArray[a].x - particleArray[b].x))
+                        + ((particleArray[a].y - particleArray[b].y) * (particleArray[a].y - particleArray[b].y));
+
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = 'rgb(255,255,255,255' + opacityValue + ')';
+                        ctx.lineWidth = .1;
+                        ctx.beginPath();
+                        ctx.moveTo(particleArray[a].x, particleArray[a].y);
+                        ctx.lineTo(particleArray[b].x, particleArray[b].y);
+                        ctx.stroke();
+
+                    }
+                }
+            }
+        }
+
+        //animation loop
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+            for (let i = 0; i < particleArray.length; i++) {
+                particleArray[i].update();
+            }
+            connect();
+        }
+
+        window.addEventListener('resize',
+            function () {
+                canvas.width = innerWidth;
+                canvas.height = innerHeight;
+                mouse.radius = ((canvas.height / 80) * (canvas.height / 80))
+                init();
+            }
+        );
+
+        window.addEventListener('mouseout',
+            function () {
+                mouse.x = undefined;
+                mouse.y = undefined;
+            }
+        );
+
+        init();
+        animate();</script>
+</body>
+
+</html>

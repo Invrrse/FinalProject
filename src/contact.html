@@ -5,11 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-
-    </style>
+    <title>HCA: Contacts</title>
 
     <link rel="stylesheet" href="stylesheets/main.css">
 </head>
@@ -40,13 +36,22 @@
                         <a class="nav-link" href="minigame.html">Mini Game</a>
                     </li>
                 </ul>
-                <button class="btn btn-outline-success ms-auto" id="login">Login</button>
-                <button class="btn btn-success ms-5 sign_up" id="sign_up">Sign Up</button>
+                <button class="btn btn-outline-success ms-auto" id="login"><a href="login.html" class="text-decoration-none text-success">Login</a></button>
+                <button class="btn btn-success ms-5 sign_up" id="sign_up"><a href="signup.html" class="text-decoration-none text-light">Sign Up</a></button>
             </div>
         </div>
     </nav>
 
-    <div class="container my-5" style="background-color: rgb(0, 0, 0, 0);">
+    <div class="container my-5" style="background-color: rgb(0, 0, 0, 0);" id="maincont">
+        <div class="row">
+            <div class="col-6 text-center text-light my-5">
+                <h1>Meet the Team!</h1>
+                <p>We have an amazing team full of capabale representatives that are ready for any questions you may
+                    have. Contact info available below.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                alt="" class="rounded-circle col-6">
+        </div>
         <div class="row">
             <img src="https://images.unsplash.com/photo-1592401807554-4a13cd4b3225?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
                 alt="" class="rounded-circle col-6">
@@ -59,6 +64,12 @@
     </div>
 
     <canvas id="canvas1"></canvas>
+
+
+    <footer class="mt-5 bg-dark bg-gradient py-3 text-light border-top border-light border-3">
+        <p class="lead text-center"> &copy; All Rights Reserved</p>
+    </footer>
+
 
     <script src="javascripts/main.js"></script>
 
@@ -207,7 +218,8 @@
         );
 
         init();
-        animate();</script>
+        animate();
+    </script>
 </body>
 
 </html>

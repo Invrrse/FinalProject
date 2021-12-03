@@ -58,22 +58,8 @@ function searchHouses(event) {
 
 }
 
-
-function hideForm() {
-    document.querySelector("#new_form").classList.add('d-none')
-    document.querySelector("#home").classList.remove('d-none')
-}
-
-function hideCards() {
-    document.querySelector("#new_form").classList.remove('d-none')
-    document.querySelector("#home").classList.add('d-none')
-}
-
 document.querySelector("button").onclick = searchHouses
 document.querySelector('[type ="search"]').onsearch = searchHouses
 document.querySelector("form").onsubmit = searchHouses
 
-document.querySelector("#login").onclick = hideCards
-document.querySelector("#sign_up").onclick = hideCards
-document.querySelector(".to-cancel").onclick = hideForm
 

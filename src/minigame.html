@@ -1,12 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <title>HCA Mini-Game</title>
+    <style>
+        body section {
+            background-image: none;
+            font-size: 40px;
+        }
+
+        section {
+            width: 100%;
+            height: 800px;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        section>div>div {
+            width: 310px;
+            height: 90%;
+            padding: 20px;
+            margin: 10px;
+            background: #fafafa;
+            box-sizing: border-box;
+            border-radius: 10%;
+            text-align: center;
+        }
+
+        section>div>p {
+            width: 400px;
+            height: 90%;
+            padding: 20px;
+            margin: 10px;
+            background: #fafafa;
+            border-radius: 10%;
+            text-align: center;
+            background-repeat: no;
+            background-size: cover;
+            font-weight: bold;
+        }
+
+        div p:nth-child(1) {
+            background-image: url("https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+        }
+
+        div p:nth-child(2) {
+            background-image: url("https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+        }
+
+        div p:nth-child(3) {
+            background-image: url("https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+        }
+
+        div p:nth-child(4) {
+            background-image: url("https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+        }
+    </style>
+    <link rel="stylesheet" href="stylesheets/main.css">
 </head>
+
 <body>
-    
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-sm-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">HCA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="housing.html">Properties Available</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="refurnish.html">Refurnishing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="minigame.html">Mini Game</a>
+                    </li>
+                </ul>
+                <button class="btn btn-outline-success ms-auto" id="login"><a href="login.html" class="text-decoration-none text-success">Login</a></button>
+                <button class="btn btn-success ms-5 sign_up" id="sign_up"><a href="signup.html" class="text-decoration-none text-light">Sign Up</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="text-center text-light bg-dark p-3">
+        <h1 class="border-0"><strong>Guess the house prices!</strong></h1>
+        <div>Guess correcly and the border will turn <span class=" fw-bold text-success">GREEN</span>, Incorrectly and
+            the border will turn <span class="text-danger fw-bold">RED</span></div>
+    </header>
+
+    <section class="">
+        <div class="d-flex container opacity-20 my-3">
+            <div class="choice" id="first">
+                <h1>100K > 300k</h1>
+            </div>
+            <div class="choice" id="second">
+                <h1>300K > 500k</h1>
+            </div>
+            <div class="choice" id="third">
+                <h1>500K > 700k</h1>
+            </div>
+            <div class="choice" id="fourth">
+                <h1>900k+</h1>
+            </div>
+        </div>
+        <div class="choice d-flex container w-100" id="main">
+            <p draggable="true" id="1">Second</p>
+            <p draggable="true" id="2">Third</p>
+            <p draggable="true" id="3">First</p>
+            <p draggable="true" id="4">Fourth</p>
+        </div>
+    </section>
+
+    <footer class="mt-5 bg-dark bg-gradient py-3 text-light border-top border-light border-3">
+        <p class="lead text-center"> &copy; All Rights Reserved</p>
+    </footer>
+
+    <script>
+        var p = document.getElementsByTagName('p')
+        var div = document.getElementsByTagName('div')
+        var choice = document.getElementsByClassName('choice')
+        var dragItem = null
+
+        for (var i of p) {
+            i.addEventListener('dragstart', dragStart)
+            i.addEventListener('dragend', dragEnd)
+        }
+
+        function dragStart() {
+            dragItem = this
+            setTimeout(() => this.style.display = "none", 0)
+        }
+
+        function dragEnd() {
+            setTimeout(() => this.style.display = "block", 0)
+            dragItem = null
+        }
+        for (j of choice) {
+            j.addEventListener('dragover', dragOver)
+            j.addEventListener('dragenter', dragEnter)
+            j.addEventListener('dragleave', dragLeave)
+            j.addEventListener('drop', Drop)
+        }
+
+        function Drop() {
+
+            this.append(dragItem)
+            if (document.getElementById('1').parentNode.id === 'first' && document.getElementById('2').parentNode.id !== 'first' && document.getElementById('3').parentNode.id !== 'first' && document.getElementById('4').parentNode.id !== 'first') {
+                document.getElementById('first').style.border = "5px dotted limegreen"
+            } else {
+                document.getElementById('first').style.border = "5px dotted red"
+            }
+            if (document.getElementById('2').parentNode.id === 'second' && document.getElementById('1').parentNode.id !== 'second' && document.getElementById('3').parentNode.id !== 'second' && document.getElementById('4').parentNode.id !== 'second') {
+                document.getElementById('second').style.border = "5px dotted limegreen"
+            } else {
+                document.getElementById('second').style.border = "5px dotted red"
+            }
+            if (document.getElementById('3').parentNode.id === 'third' && document.getElementById('1').parentNode.id !== 'third' && document.getElementById('2').parentNode.id !== 'third' && document.getElementById('4').parentNode.id !== 'third') {
+                document.getElementById('third').style.border = "5px dotted limegreen"
+            } else {
+                document.getElementById('third').style.border = "5px dotted red"
+            }
+            if (document.getElementById('4').parentNode.id === 'fourth' && document.getElementById('1').parentNode.id !== 'fourth' && document.getElementById('2').parentNode.id !== 'fourth' && document.getElementById('3').parentNode.id !== 'fourth') {
+                document.getElementById('fourth').style.border = "5px dotted limegreen"
+            } else {
+                document.getElementById('fourth').style.border = "5px dotted red"
+            }
+        }
+        function dragOver(e) {
+            e.preventDefault()
+        }
+        function dragEnter(e) {
+            e.preventDefault()
+        }
+        function dragLeave() {
+            this.style.border = "none"
+        }
+    </script>
 </body>
+
 </html>

@@ -5,14 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Horizon Capital Advantage</title>
+  <title>HCA: Homepage</title>
 
   <!-- Don't change the paths of the following two lines - They are produced by webpack-->
   <link rel="stylesheet" href="stylesheets/main.css">
 </head>
 
 <body>
-
   <!-- Your HTML goes here -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-sm-top">
     <div class="container-fluid">
@@ -39,50 +38,19 @@
             <a class="nav-link" href="minigame.html">Mini Game</a>
           </li>
         </ul>
-        <button class="btn btn-outline-success ms-auto" id="login">Login</button>
-        <button class="btn btn-success ms-5 sign_up" id="sign_up">Sign Up</button>
+        <button class="btn btn-outline-success ms-auto" id="login"><a href="login.html" class="text-decoration-none text-success">Login</a></button>
+        <button class="btn btn-success ms-5 sign_up" id="sign_up"><a href="signup.html" class="text-decoration-none text-light">Sign Up</a></button>
       </div>
     </div>
   </nav>
 
   <div class="jumbotron container-fluid py-5">
     <div class="py-5 text-light">
-      <h1 class="display-4 fw-bold">Horizon Capital Advantage</h1>
+      <h1 class="display-4 fw-bold border-0">Horizon Capital Advantage</h1>
       <p class="lead fw-bold">
         "Where Dreams Become Realty"
       </p>
     </div>
-  </div>
-
-  <div id="new_form" class="container my-3 p-4 d-none">
-    <form class="account_form">
-      <h1>Create Account</h1>
-      <div class="row row-cols-2">
-        <div class="mb-3">
-          <label for="fName" class="form-label">First Name</label>
-          <input type="text" class="form-control" id="fName" name="fName" placeholder="Enter first name here">
-        </div>
-        <div class="mb-3">
-          <label for="lName" class="form-label">Last Name</label>
-          <input type="text" class="form-control" id="lName" name="lName" placeholder="Enter last name here">
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Enter email here">
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="text" class="form-control" id="password" name="password" placeholder="Enter password here">
-      </div>
-      <div class="form-switch mb-3">
-        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-        <label class="form-check-label" for="flexSwitchCheckDefault">Do you want to opt-in to receive updates and
-          promotional offers?</label>
-      </div>
-      <button type="submit" class="btn btn-primary float-start me-5">Submit</button>
-      <button type="button" class="btn btn-danger to-cancel">Cancel</button>
-    </form>
   </div>
 
   <div class="container p-4 my-4" id="maincont">
@@ -127,50 +95,62 @@
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
       <h1 class="mt-5 mb-3">Current Listed Homes</h1>
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="d-block w-100" alt="...">
+          <img
+            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            class="d-block w-100" alt="house1">
           <div class="carousel-caption d-none d-md-block">
-            <h1 class="text-success"><strong>$440K</strong></h1>
+            <h1 class="text-success "><strong>$440K</strong></h1>
             <a href="housing.html" class="link-light"><strong>Take me to it!</strong></a>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
+          <img
+            src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+            class="d-block w-100" alt="house2">
+          <div class="carousel-caption d-none d-sm-block">
             <h1 class="text-success"><strong>$220K</strong></h1>
             <a href="housing.html" class="link-light"><strong>Take me to it!</strong></a>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://images.unsplash.com/photo-1558308508-4e7a8fdff9c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80" class="d-block w-100" alt="...">
+          <img
+            src="https://images.unsplash.com/photo-1558308508-4e7a8fdff9c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80"
+            class="d-block w-100" alt="house3">
           <div class="carousel-caption d-none d-md-block">
             <h1 class="text-success"><strong>$540K</strong></h1>
             <a href="housing.html" class="link-light"><strong>Take me to it!</strong></a>
           </div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
   </div>
 
-  <footer class="mt-4 bg-dark bg-gradient py-5 text-light">
+  <footer class="mt-5 bg-dark bg-gradient py-3 text-light border-top border-light border-3">
     <p class="lead text-center"> &copy; All Rights Reserved</p>
   </footer>
 
   <!-- Leave the following line as is at the end of body -->
-  <script src="javascripts/main.js"></script>
+  <script src="/javascripts/main.js"></script>
+
 </body>
 
 </html>

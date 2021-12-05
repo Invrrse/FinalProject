@@ -4,10 +4,7 @@
 
 .jumbotron{
     background: url("https://images3.alphacoders.com/152/152419.jpg");
-    background-position: 0 -500px;
     background-size: cover;
-    border-bottom: 3px solid white;
-    background-attachment: fixed;
 }
 p{
     font-size: 20px;
@@ -16,6 +13,7 @@ p{
 .container{
     background-color: #eee;
     border-radius: 50px;
+    padding: 10px;
     
 }
 
